@@ -1634,7 +1634,7 @@ Readability.prototype = {
         // non-paragraph elements is more than paragraphs or other
         // ominous signs, remove the element.
         var p = node.getElementsByTagName("p").length;
-        var img = node.getElementsByTagName("img").length;
+        // var img = node.getElementsByTagName("img").length;
         var li = node.getElementsByTagName("li").length - 100;
         var input = node.getElementsByTagName("input").length;
 
@@ -1649,13 +1649,13 @@ Readability.prototype = {
         var contentLength = this._getInnerText(node).length;
 
         var haveToRemove =
-          (img > 1 && p / img < 0.5 && !this._hasAncestorTag(node, "figure")) ||
+          // (img > 1 && p / img < 0.5 && !this._hasAncestorTag(node, "figure")) ||
           (!isList && li > p) ||
           (input > Math.floor(p / 3)) ||
-          (!isList && contentLength < 25 && (img === 0 || img > 2) && !this._hasAncestorTag(node, "figure")) ||
+          // (!isList && contentLength < 25 && (img === 0 || img > 2) && !this._hasAncestorTag(node, "figure")) ||
           (!isList && weight < 25 && linkDensity > 0.2) ||
           (weight >= 25 && linkDensity > 0.5) ||
-          ((embedCount === 1 && contentLength < 75) || embedCount > 1);
+          ((embedCount === 1 && contentLength < 75) || embedCount > 5);
         return haveToRemove;
       }
       return false;
